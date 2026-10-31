@@ -26,9 +26,12 @@ public final class LadderController {
     public void run(BooleanSupplier shouldConnect) {
         List<PlayerName> names = inputView.readNames();
         List<Outcome> outcomes = inputView.readOutcomes();
+        
         LadderSize size = new LadderSize(names.size(), inputView.readHeight());
         Ladder ladder = Ladder.generate(size, shouldConnect);
+
         LadderGame game = LadderGame.play(ladder, names, outcomes);
+
         outputView.printBoard(ladder, names, outcomes);
         readResults(game);
     }
